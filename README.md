@@ -1,6 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## S3-website link
+#initial
 https://ml6503-nodejs-aws-fe.s3.amazonaws.com/index.html
+
+#amended
+https://cyprus-handmade.s3.eu-central-1.amazonaws.com/index.html
 
 ## Cloudfront URL
 
@@ -8,8 +12,7 @@ https://ml6503-nodejs-aws-fe.s3.amazonaws.com/index.html
 https://d1916ha8f5seor.cloudfront.net/
 
 #amended
-
-
+https://dqhsjaagrvlzx.cloudfront.net
 
 ## Available Scripts
 
