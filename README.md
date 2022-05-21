@@ -1,8 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ## S3-website link
-#initial
-http://aws-node-cyhandmade-shop.s3-website-us-east-1.amazonaws.com
 
+http://aws-node-cyhandmade-shop.s3-website-us-east-1.amazonaws.com
 ## Cloudfront URL
 
 https://d3ijubo1bigtmg.cloudfront.net
