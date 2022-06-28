@@ -11,7 +11,6 @@ import {formatAsPrice} from "utils/utils";
 import AddProductToCart from "components/AddProductToCart/AddProductToCart";
 import axios from 'axios';
 import API_PATHS from "constants/apiPaths";
-// import productList from "./productList.json";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -37,18 +36,16 @@ export default function Products() {
 
   useEffect(() => {
     // axios.get(`${API_PATHS.bff}/product/available/`)
-    // axios.get(`${API_PATHS.product}/products`)
-    axios.get(`${API_PATHS.bff}/products`, {        
+        
+      axios.get(`${API_PATHS.bff}/products`, {        
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
       }
-    })
-      // .then(res => setProducts(res.data));
+    })    
       .then(res => {      
         setProducts(res.data.products);
-      });
-     
-    // setProducts(productList);
+      });     
+  
   }, [products])
 
   return (
