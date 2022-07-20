@@ -3,6 +3,14 @@ import {makeStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import axios from 'axios';
 
+const shopLocalStorage: Storage = window.localStorage;
+const gitHubUserName: string = `${process.env.USER_NAME}`;
+const encodedPassword = btoa(`${ process.env.gitHubUserName }`)
+
+shopLocalStorage.setItem(gitHubUserName, encodedPassword);
+
+const password = shopLocalStorage.getItem(gitHubUserName);
+
 const useStyles = makeStyles((theme) => ({
   content: {
     padding: theme.spacing(3, 0, 3),
@@ -42,6 +50,9 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
       console.log('Uploading to: ', response.data)
       const result = await fetch(response.data, {
         method: 'PUT',
+        headers: new Headers({
+          'Authorization': `Basic ${password}`
+        }),
         body: file
       })
       console.log('Result: ', result)

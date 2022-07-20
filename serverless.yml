@@ -35,7 +35,7 @@ custom:
   client:
     bucketName: aws-node-cyhandmade-shop
     distributionFolder: build
-    indexDocument: index.html
+    # indexDocument: index.html
     manageResources: true
   ## Serverless-single-page-app-plugin configuration:
   s3LocalPath: ${self:custom.client.distributionFolder}/
