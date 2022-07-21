@@ -15,6 +15,10 @@ type CSVFileImportProps = {
   title: string
 };
 
+function utf8_to_b64(str: string) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
+
 export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const classes = useStyles();
   const [file, setFile] = useState<any>();
@@ -33,11 +37,13 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const uploadFile = async (e: any) => {
   const shopLocalStorage: Storage = window.localStorage;
   const gitHubUserName: string = `${process.env.USER_NAME}`;
-  const encodedPassword = btoa(`${ process.env.gitHubUserName }`)
+  const encodedPassword = utf8_to_b64(`${ process.env.gitHubUserName }`)
+  // const encodedPassword = utf8_to_b64(`TEST_PASSWORD`)
+  
 
-if(!shopLocalStorage.getItem(gitHubUserName)) {
+// if(!shopLocalStorage.getItem(gitHubUserName)) {
   shopLocalStorage.setItem(gitHubUserName, encodedPassword);
-}
+// }
 
 const password = shopLocalStorage.getItem(gitHubUserName);
 
@@ -55,8 +61,7 @@ console.log('PASSWORD', password);
       const result = await fetch(response.data, {
         method: 'PUT',
         headers: new Headers({
-          'Authorization': `Basic ${password}`,
-          'Access-Control-Allow-Origin': '*'
+          'Authorization': `Basic ${password}`  
         }),
         body: file
       })

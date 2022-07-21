@@ -15,7 +15,9 @@ axios.interceptors.response.use(
   },
   function(error) {
     if (error?.response?.status === 400 || 401 || 403) {
-      alert(error.response.data?.data);
+      console.log('ERROR : ',error);
+      // alert(error.response.data?.data === 'undefined' ? error.message : error.response.data?.data);
+      alert(error?.message);
     }
 
     return Promise.reject(error?.response ?? error);
