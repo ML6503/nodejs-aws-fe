@@ -3,17 +3,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import axios from 'axios';
 
-const shopLocalStorage: Storage = window.localStorage;
-const gitHubUserName: string = `${process.env.USER_NAME}`;
-const encodedPassword = btoa(`${ process.env.gitHubUserName }`)
-
-if(!shopLocalStorage.getItem(gitHubUserName)) {
-shopLocalStorage.setItem(gitHubUserName, encodedPassword);
-}
-
-const password = shopLocalStorage.getItem(gitHubUserName);
-
-console.log('PASSWORD', password);
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -42,6 +31,17 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   };
 
   const uploadFile = async (e: any) => {
+  const shopLocalStorage: Storage = window.localStorage;
+  const gitHubUserName: string = `${process.env.USER_NAME}`;
+  const encodedPassword = btoa(`${ process.env.gitHubUserName }`)
+
+if(!shopLocalStorage.getItem(gitHubUserName)) {
+shopLocalStorage.setItem(gitHubUserName, encodedPassword);
+}
+
+const password = shopLocalStorage.getItem(gitHubUserName);
+
+console.log('PASSWORD', password);
       // Get the presigned URL
       const response = await axios({
         method: 'GET',
