@@ -176,8 +176,6 @@ resources:
           ## The only exception are files that actually exist e.h. app.js, reset.css
           CustomErrorResponses:
             - ErrorCode: 404
-            - ErrorCode: 401
-            - ErrorCode: 403
               ResponseCode: 200
               ResponsePagePath: /index.html
           DefaultCacheBehavior:
