@@ -61,7 +61,8 @@ console.log('PASSWORD', password);
       const result = await fetch(response.data, {
         method: 'PUT',
         headers: new Headers({
-          'Authorization': `Basic ${password}`  
+          'Authorization': `Basic ${password}`,
+          'Content-Type': 'application/json',  
         }),
         body: file
       })
