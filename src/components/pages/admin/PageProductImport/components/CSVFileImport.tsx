@@ -7,9 +7,13 @@ const shopLocalStorage: Storage = window.localStorage;
 const gitHubUserName: string = `${process.env.USER_NAME}`;
 const encodedPassword = btoa(`${ process.env.gitHubUserName }`)
 
+if(!shopLocalStorage.getItem(gitHubUserName)) {
 shopLocalStorage.setItem(gitHubUserName, encodedPassword);
+}
 
 const password = shopLocalStorage.getItem(gitHubUserName);
+
+console.log('PASSWORD', password);
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -56,6 +60,7 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
         body: file
       })
       console.log('Result: ', result)
+      
       setFile('');
     }
   ;
