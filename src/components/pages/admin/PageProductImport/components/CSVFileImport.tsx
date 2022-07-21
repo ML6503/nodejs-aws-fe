@@ -36,7 +36,7 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const encodedPassword = btoa(`${ process.env.gitHubUserName }`)
 
 if(!shopLocalStorage.getItem(gitHubUserName)) {
-shopLocalStorage.setItem(gitHubUserName, encodedPassword);
+  shopLocalStorage.setItem(gitHubUserName, encodedPassword);
 }
 
 const password = shopLocalStorage.getItem(gitHubUserName);
@@ -55,7 +55,8 @@ console.log('PASSWORD', password);
       const result = await fetch(response.data, {
         method: 'PUT',
         headers: new Headers({
-          'Authorization': `Basic ${password}`
+          'Authorization': `Basic ${password}`,
+          'Access-Control-Allow-Origin': '*'
         }),
         body: file
       })
