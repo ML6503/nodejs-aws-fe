@@ -36,20 +36,14 @@ export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    // axios.get(`${API_PATHS.bff}/product/available/`)
-    // axios.get(`${API_PATHS.product}/products`)
-    axios.get(`${API_PATHS.bff}/products`, {        
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
+    axios.get(`${API_PATHS.bff}/products`, {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
       }
     })
-      // .then(res => setProducts(res.data));
-      .then(res => {      
-        setProducts(res.data.products);
-      });
-     
+      .then(res => setProducts(res.data.products));
     // setProducts(productList);
-  }, [products])
+  }, [])
 
   return (
     <Grid container spacing={4}>
