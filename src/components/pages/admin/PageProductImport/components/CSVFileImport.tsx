@@ -37,8 +37,9 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const uploadFile = async (e: any) => {
   const shopLocalStorage: Storage = window.localStorage;
   const gitHubUserName: string = `${process.env.USER_NAME}`;
-  const encodedPassword = utf8_to_b64(`${ process.env.gitHubUserName }`)
-  // const encodedPassword = utf8_to_b64(`TEST_PASSWORD`)
+
+  // const encodedPassword = utf8_to_b64(`${process.env.gitHubUserName}`)
+  const encodedPassword = utf8_to_b64(`TEST_PASSWORD`)
   
 
 // if(!shopLocalStorage.getItem(gitHubUserName)) {
