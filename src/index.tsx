@@ -15,9 +15,7 @@ axios.interceptors.response.use(
   },
   function(error) {
     if (error?.response?.status === 400 || 401 || 403) {
-      console.log('ERROR : ',error);
-      // alert(error.response.data?.data === 'undefined' ? error.message : error.response.data?.data);
-      alert(error?.message);
+      alert(error.response.data.message);
     }
 
     return Promise.reject(error?.response ?? error);
@@ -38,8 +36,7 @@ ReactDOM.render(
       <ThemeProvider theme={theme}>
       <CssBaseline/>
       <App/>
-      </ThemeProvider>
-     
+      </ThemeProvider>     
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
