@@ -17,8 +17,8 @@ custom:
   client:
     bucketName: cyhandmade-shop-second
     distributionFolder: build
-    indexDocument: index.html
-    manageResources: true
+    # indexDocument: index.html
+    # manageResources: true
   ## Serverless-single-page-app-plugin configuration:
   s3LocalPath: ${self:custom.client.distributionFolder}/
   s3BucketName: ${self:custom.client.bucketName}
