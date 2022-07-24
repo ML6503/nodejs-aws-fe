@@ -9,12 +9,15 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import {  ThemeProvider, createTheme } from '@material-ui/core/styles';
 import axios from 'axios';
 
+const errorsArray = [400, 401, 403];
+
 axios.interceptors.response.use(
   response => {
     return response;
   },
   function(error) {
-    if (error?.response?.status === 400 || error?.response?.status === 401 || error?.response?.status === 403) {
+
+    if ( errorsArray.includes(error?.response?.status)) {
       alert(error.response.data.message);
     }
 
