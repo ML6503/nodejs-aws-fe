@@ -18,8 +18,8 @@ custom:
   client:
     bucketName: cyhandmade-shop-second
     distributionFolder: build
-    # indexDocument: index.html
-    # manageResources: true
+    indexDocument: index.html
+    manageResources: false
   ## Serverless-single-page-app-plugin configuration:
   s3LocalPath: ${self:custom.client.distributionFolder}/
   s3BucketName: ${self:custom.client.bucketName}
@@ -168,6 +168,9 @@ resources:
           ## The only exception are files that actually exist e.h. app.js, reset.css
           CustomErrorResponses:
             - ErrorCode: 404
+              ResponseCode: 200
+              ResponsePagePath: /index.html
+            - ErrorCode: 403
               ResponseCode: 200
               ResponsePagePath: /index.html
           DefaultCacheBehavior:
