@@ -1,4 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## S3-website link
+
+http://cyhandmade-shop-second.s3-website-eu-west-1.amazonaws.com/
+## Cloudfront URL
+
+https://d3kdjtzujfvruo.cloudfront.net/
 
 ## Available Scripts
 

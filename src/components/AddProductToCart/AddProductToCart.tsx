@@ -7,6 +7,7 @@ import Remove from "@material-ui/icons/Remove";
 import IconButton from "@material-ui/core/IconButton";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, selectCartItems, removeFromCart} from "store/cartSlice";
+import { CartItem } from 'models/CartItem';
 
 type AddProductToCartProps = {
   product: Product
@@ -15,7 +16,7 @@ type AddProductToCartProps = {
 export default function AddProductToCart({product}: AddProductToCartProps) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const cartItem = cartItems.find(i => i.product.id === product.id);
+  const cartItem = cartItems.find((i: CartItem) => i.product.id === product.id);
 
   return (
     <>
