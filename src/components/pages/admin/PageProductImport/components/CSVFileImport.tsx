@@ -15,9 +15,9 @@ type CSVFileImportProps = {
   title: string
 };
 
-// function createBasicAuthString(str: string) {
-//   return window.btoa(unescape(encodeURIComponent(str)));
-// }
+function createBasicAuthString(str: string) {
+  return window.btoa(unescape(encodeURIComponent(str)));
+}
 
 export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const classes = useStyles();
@@ -39,9 +39,9 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const shopLocalStorage: Storage = window.localStorage;
   // shopLocalStorage.clear();
 
-  // const encodedPassword = createBasicAuthString(`ML6503:TEST_PASSWORD`);  
+  const encodedPassword = createBasicAuthString(`ML6503:TEST_PASSWORD`);  
 
-  // shopLocalStorage.setItem('authorization_token', encodedPassword);
+  shopLocalStorage.setItem('authorization_token', encodedPassword);
 
   const password = shopLocalStorage.getItem('authorization_token');
   
