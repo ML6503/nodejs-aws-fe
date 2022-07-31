@@ -9,13 +9,16 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import {  ThemeProvider, createTheme } from '@material-ui/core/styles';
 import axios from 'axios';
 
+const errorsArray = [400, 401, 403];
+
 axios.interceptors.response.use(
   response => {
     return response;
   },
   function(error) {
-    if (error?.response?.status === 400) {
-      alert(error.response.data?.data);
+
+    if ( errorsArray.includes(error?.response?.status)) {
+      alert(error.response.data.message);
     }
 
     return Promise.reject(error?.response ?? error);
@@ -36,8 +39,7 @@ ReactDOM.render(
       <ThemeProvider theme={theme}>
       <CssBaseline/>
       <App/>
-      </ThemeProvider>
-     
+      </ThemeProvider>     
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

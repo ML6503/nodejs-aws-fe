@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Typography from "@material-ui/core/Typography";
 import axios from 'axios';
 
+
 const useStyles = makeStyles((theme) => ({
   content: {
     padding: theme.spacing(3, 0, 3),
@@ -13,6 +14,10 @@ type CSVFileImportProps = {
   url: string,
   title: string
 };
+
+// function createBasicAuthString(str: string) {
+//   return window.btoa(unescape(encodeURIComponent(str)));
+// }
 
 export default function CSVFileImport({url, title}: CSVFileImportProps) {
   const classes = useStyles();
@@ -30,21 +35,38 @@ export default function CSVFileImport({url, title}: CSVFileImportProps) {
   };
 
   const uploadFile = async (e: any) => {
+
+  const shopLocalStorage: Storage = window.localStorage;
+  // shopLocalStorage.clear();
+
+  // const encodedPassword = createBasicAuthString(`ML6503:TEST_PASSWORD`);  
+
+  // shopLocalStorage.setItem('authorization_token', encodedPassword);
+
+  const password = shopLocalStorage.getItem('authorization_token');
+  
+  console.log('PASSWORD', password);
       // Get the presigned URL
       const response = await axios({
         method: 'GET',
         url,
         params: {
           name: encodeURIComponent(file.name)
-        }
+        },
+        headers: 
+        {
+          'Authorization': `Basic ${password}`,
+          'Content-Type': 'application/json',  
+        }, 
       })
       console.log('File to upload: ', file.name)
-      console.log('Uploading to: ', response.data)
+      console.log('Uploading to: ', response)
       const result = await fetch(response.data, {
-        method: 'PUT',
-        body: file
+        method: 'PUT',  
+        body: file 
       })
       console.log('Result: ', result)
+      
       setFile('');
     }
   ;
