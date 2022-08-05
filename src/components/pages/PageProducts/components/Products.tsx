@@ -52,8 +52,9 @@ export default function Products() {
           <Card className={classes.card}>
             <CardMedia
               className={classes.cardMedia}
-              image={`https://source.unsplash.com/random?sig=${index}`}
-              title="Image title"
+              // image={`https://source.unsplash.com/random?sig=${index}`}
+              image={product.image === '' ? 'https://d1hanza5iosnsr.cloudfront.net/coming-soon.jpg' : product.image}
+              title={product.title}
             />
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
